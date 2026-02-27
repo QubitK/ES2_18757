@@ -1,16 +1,10 @@
 package com.es2.singleton;
 
-/**
- * Classe de demonstração do padrão Singleton aplicado ao {@link Registry}.
- *
- * <p>Mostra que, independentemente de quantas vezes se chame {@code getInstance()},
- * é sempre devolvido o <strong>mesmo objeto</strong> em memória.
- */
 public class Main {
 
     public static void main(String[] args) {
 
-        // --- Cliente A: configura as variáveis globais ---
+        // Cliente A configura as variáveis globais
         Registry registryA = Registry.getInstance();
         registryA.setPath("/var/app/files");
         registryA.setConnectionString("jdbc:postgresql://localhost:5432/mydb");
@@ -19,18 +13,17 @@ public class Main {
         System.out.println("Path             : " + registryA.getPath());
         System.out.println("Connection String: " + registryA.getConnectionString());
 
-        // --- Cliente B: obtém a instância e lê os valores ---
-        // Não usa "new Registry()" — acede sempre via getInstance()
+        // Cliente B obtem a instância e lê os valores
+        // não consegue criar novo Registo, acede sempre ao mesmo via getInstance()
         Registry registryB = Registry.getInstance();
 
         System.out.println("\n=== Cliente B ===");
         System.out.println("Path             : " + registryB.getPath());
         System.out.println("Connection String: " + registryB.getConnectionString());
 
-        // --- Verificação da unicidade da instância ---
-        // "==" compara referências em memória; se forem o mesmo objeto, é Singleton.
-        System.out.println("\n=== Verificação Singleton ===");
-        System.out.println("registryA == registryB? " + (registryA == registryB));
-        // Esperado: true — ambos apontam para o mesmo objeto em memória
+        // Verificação do SINGLETON
+        // operador "==" permite comparar referências em memória, assim espera-se TRUE correspondedo ambas ao mesmo objeto
+        System.out.println("\n Teste Singleton");
+        System.out.println("Objeto registryA é a mesma instância de Registo que Objeto registryB? " + (registryA == registryB));
     }
 }
