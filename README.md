@@ -7,4 +7,4 @@ Task 2: Factory Pattern
 Task 3: Object Pool
 Task 4: Bridge Pattern
 Task 5: Composite Pattern
-Task 6: Decorator Pattern (Pendent Break.it Validation - API 403)
+Task 6: Decorator Pattern

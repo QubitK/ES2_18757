@@ -1,10 +1,9 @@
-package com.es2.decoratorpattern;
-import java.io.IOException;
+package com.es2.decorator;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
 
 // Implements the main authentication logic
 
@@ -26,9 +25,9 @@ public class Auth implements AuthInterface {
 
     private static final Map<String, String> REGISTERED_CREDENTIALS = new HashMap<>();
     {
+        REGISTERED_CREDENTIALS.put("admin", hash("admin"));
         REGISTERED_CREDENTIALS.put("user", hash("LisbonPW"));
-        REGISTERED_CREDENTIALS.put("admin", hash("admintelecom"));
-        REGISTERED_CREDENTIALS.put("user2", hash("password2"));
+        REGISTERED_CREDENTIALS.put("user3", hash("password3"));
     }
 
     public Auth(){}

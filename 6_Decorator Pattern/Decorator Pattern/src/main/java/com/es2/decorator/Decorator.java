@@ -1,4 +1,4 @@
-package com.es2.decoratorpattern;
+package com.es2.decorator;
 import java.io.IOException;
 
 // Represents the base class of all decorators.

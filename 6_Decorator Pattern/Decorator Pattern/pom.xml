@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Project coordinates: these three together uniquely identify your project -->
-    <groupId>com.es2.decoratorpattern</groupId>   <!-- your organisation/package namespace -->
+    <groupId>com.es2.decorator</groupId>   <!-- your organisation/package namespace -->
     <artifactId>DecoratorPattern</artifactId>      <!-- the name of this specific project/module -->
     <version>1.0-SNAPSHOT</version>                <!-- SNAPSHOT = still in development, not a stable release -->
 
@@ -22,17 +22,25 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
 
             <!-- maven-surefire-plugin: responsible for running your JUnit tests during the
-                 "test" phase of the Maven build lifecycle (i.e. when you run `mvn test`)
+                 "test" phase of the Maven build lifecycle (i.e. when you run `mvn test`) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
             </plugin>
-             -->
             <!-- maven-jar-plugin: packages your compiled code into a .jar file -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -42,7 +50,7 @@
                     <archive>
                         <manifest>
                             <!-- Tells the JVM which class to run when you do `java -jar yourapp.jar` -->
-                            <mainClass>com.es2.decoratorpattern</mainClass>
+                            <mainClass>com.es2.decorator</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

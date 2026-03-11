@@ -1,4 +1,4 @@
-package com.es2.decoratorpattern;
+package com.es2.decorator;
 import java.io.IOException;
 
 // Defines the common interface implemented by the Auth classes and all decorators classes
