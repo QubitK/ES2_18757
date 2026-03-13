@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Root element of the POM. Declares XML namespaces so Maven can validate this file. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Always 4.0.0 — the only POM model version Maven currently supports -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Project coordinates: these three together uniquely identify your project -->
+    <groupId>com.es2.decoratorpattern</groupId>   <!-- your organisation/package namespace -->
+    <artifactId>DecoratorPattern</artifactId>      <!-- the name of this specific project/module -->
+    <version>1.0-SNAPSHOT</version>                <!-- SNAPSHOT = still in development, not a stable release -->
+
+    <properties>
+        <!-- Tell the Java compiler to accept Java 8 source syntax -->
+        <maven.compiler.source>8</maven.compiler.source>
+        <!-- Compile to bytecode compatible with Java 8 JVMs -->
+        <maven.compiler.target>8</maven.compiler.target>
+        <!-- Ensures source files are read as UTF-8, avoiding encoding issues -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+
+            <!-- maven-surefire-plugin: responsible for running your JUnit tests during the
+                 "test" phase of the Maven build lifecycle (i.e. when you run `mvn test`)
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+            </plugin>
+             -->
+            <!-- maven-jar-plugin: packages your compiled code into a .jar file -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- Tells the JVM which class to run when you do `java -jar yourapp.jar` -->
+                            <mainClass>com.es2.decoratorpattern</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

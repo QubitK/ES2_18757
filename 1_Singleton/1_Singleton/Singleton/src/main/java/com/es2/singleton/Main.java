@@ -17,6 +17,8 @@ public class Main {
         // não consegue criar novo Registo, acede sempre ao mesmo via getInstance()
         Registry registryB = Registry.getInstance();
 
+        registryB.setPath("/var/appData/local");
+        registryB.setConnectionString("jdbc:postgresql://localhost:5432/mydbB");
         System.out.println("\n=== Cliente B ===");
         System.out.println("Path             : " + registryB.getPath());
         System.out.println("Connection String: " + registryB.getConnectionString());

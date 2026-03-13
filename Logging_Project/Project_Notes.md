@@ -1,0 +1,2 @@
+- Manter diagrama de classes sempre atualizado;
+- Criar fronteiras entre padrões no desenho das classes para identificação dos padrões;

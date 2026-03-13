@@ -36,6 +36,15 @@ public class ReusablePool {
         for (int i = 0; i < MAX_POOL_SIZE; i++) {
             available.add((HttpURLConnection) url.openConnection()); // explicado acima
         }
+
+        // Garante que todas as conexões são fechadas quando a JVM termina
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            for (HttpURLConnection conn : available) conn.disconnect();
+            for (HttpURLConnection conn : inUse) conn.disconnect();
+            available.clear();
+            inUse.clear();
+            System.out.println("\n\nConections fully released on closing...");
+        }));
     }
 
     // Metodo estático e sincronizado que devolve a instância única do pool, usa synchronazed para adicionar thread-safe
@@ -76,6 +85,8 @@ public class ReusablePool {
 
     // limpa tudo e recria conexões
     public synchronized void resetPool() throws IOException {
+        for (HttpURLConnection conn : available) conn.disconnect();
+        for (HttpURLConnection conn : inUse) conn.disconnect();
         available.clear();
         inUse.clear();
         URL url = new URL(IPV_URL);
