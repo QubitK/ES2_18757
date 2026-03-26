@@ -20,17 +20,10 @@ public abstract class LogRecord implements LogRecordInterface {
     @Override public String getTimestamp() { return timestamp; }
 
     @Override
-    public String format() {
+    public String outputFormatted() {
         return LogConfig.INSTANCE.getMessageFormat()
                 .replace("{level}", getLevel().toString())
                 .replace("{timestamp}", timestamp)
                 .replace("{message}",   message);
     }
-
-    public void outputLog() {
-        if(this.level.ordinal() >= LogConfig.INSTANCE.getMinimumLevel().ordinal()){
-            System.out.println(this.format() + "\n");
-        }
-    }
-
 }

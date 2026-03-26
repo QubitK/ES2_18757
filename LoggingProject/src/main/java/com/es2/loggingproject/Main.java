@@ -4,25 +4,52 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("---------------------------- ES2: LOGGING PROJECT ----------------------------\n");
+        // M1: SINGLETON
         LogConfig.INSTANCE.setMinimumLevel(LogLevel.DEBUG);
 
-        LogCreator debugCreator_1 = new DebugLogCreator();
-        LogCreator errorCreator_1 = new ErrorLogCreator();
-        LogCreator infoCreator_1 = new InfoLogCreator();
-        LogCreator warningCreator_1 = new WarningLogCreator();
+        // M2: FACTORY METHOD
+        LogCreator Debug_Creator = new DebugLogCreator();
+        LogCreator Error_Creator = new ErrorLogCreator();
+        LogCreator Info_Creator = new InfoLogCreator();
+        LogCreator Warning_Creator = new WarningLogCreator();
+//
+//        LogRecordInterface Debug_Logger = Debug_Creator.createLog("DEBUG LOG TEST MESSAGE");
+//        LogRecordInterface Error_Logger = Error_Creator.createLog("ERROR LOG TEST MESSAGE");
+//        LogRecordInterface Info_Logger = Info_Creator.createLog("INFO LOG TEST MESSAGE");
+//        LogRecordInterface Warning_Logger = Warning_Creator.createLog("WARNING LOG TEST MESSAGE");
 
-        LogRecordInterface debugLogger_1 = debugCreator_1.createLog("DEBUG test message 1");
-        LogRecordInterface errorLogger_1 = errorCreator_1.createLog("ERROR test message 1");
-        LogRecordInterface infoLogger_1 = infoCreator_1.createLog("INFO test message 1");
-        LogRecordInterface warningLogger_1 = warningCreator_1.createLog("WARNING test message 1");
-        LogRecordInterface debugLogger_2 = debugCreator_1.createLog("DEBUG test message 2");
 
-        debugLogger_1.outputLog();
-        errorLogger_1.outputLog();
-        infoLogger_1.outputLog();
-        warningLogger_1.outputLog();
-        debugLogger_2.outputLog();
+        // M3: BRIDGE PATTERN
+//        Logger logger = new Logger();
+//        String Console_Destination_ID = logger.addDestination(new ConsoleDestination());
+//        String file_ID = logger.addDestination(new FileDestination("logs.txt"));
+//
+//        System.out.println("\nLoggar para todos os destinos criados:");
+//        logger.logAllDestinations(Debug_Logger);
+//        logger.logAllDestinations(Error_Logger);
+//
+//        System.out.println("\nLoggar para destino especifico:");
+//        logger.logDestination(Console_Destination_ID, Info_Logger);
+//        logger.logDestination(file_ID, Warning_Logger);
 
+        // M4: COMPOSITE PATTERN
+        // M4: COMPOSITE PATTERN
+        LogCategory authCategory = new LogCategory("autenticacao");
+        authCategory.add(new LogEntry(Debug_Creator.createLog("Tentativa de login")));
+        authCategory.add(new LogEntry(Error_Creator.createLog("Password incorreta")));
+
+        LogCategory dbCategory = new LogCategory("base-de-dados");
+        dbCategory.add(new LogEntry(Info_Creator.createLog("Conexão estabelecida")));
+        dbCategory.add(new LogEntry(Warning_Creator.createLog("Query lenta detetada")));
+
+        LogCategory appLogs = new LogCategory("aplicacao");
+        appLogs.add(authCategory);   // composite dentro de composite
+        appLogs.add(dbCategory);
+        appLogs.add(new LogEntry(Error_Creator.createLog("Erro genérico da aplicação"))); // leaf direto
+
+        System.out.println("\nOutput estruturado por categorias:");
+        ConsoleDestination console = new ConsoleDestination();
+        appLogs.outputTo(console);
     }
 }
 

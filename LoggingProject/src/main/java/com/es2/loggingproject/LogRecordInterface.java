@@ -5,7 +5,5 @@ public interface LogRecordInterface {
     LogLevel getLevel();
     String getMessage();
     String getTimestamp();
-    String format();
-    void outputLog();
-
+    String outputFormatted();
 }
