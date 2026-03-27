@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 // Classe de abstração da interface
 public abstract class LogRecord implements LogRecordInterface {
 
-    protected final LogLevel level;
-    protected final String message;
-    protected final String timestamp;
+    protected LogLevel level;
+    protected String message;
+    protected String timestamp;
 
     protected LogRecord(LogLevel level, String message) {
         this.message = message;

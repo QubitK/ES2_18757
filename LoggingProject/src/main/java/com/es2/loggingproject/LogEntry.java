@@ -1,15 +1,16 @@
 package com.es2.loggingproject;
 
-public class LogEntry implements LogComponent {
+// COMPOSITE PATTERN: LEAF
+public class LogEntry extends LogComponent {
+
     private final LogRecordInterface record;
 
     public LogEntry(LogRecordInterface record) {
         this.record = record;
     }
 
-    @Override
     public String getName() {
-        return record.getLevel().toString();
+        return record.getLevel().name();
     }
 
     @Override
@@ -18,4 +19,5 @@ public class LogEntry implements LogComponent {
             destination.write(record);
         }
     }
+
 }

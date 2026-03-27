@@ -1,0 +1,2 @@
+[INFO] [2026-03-27T14:22:07.041302]: Autenticação efetuada com sucesso.
+[WARNING] [2026-03-27T14:22:07.041302]: Autenticação falhou.

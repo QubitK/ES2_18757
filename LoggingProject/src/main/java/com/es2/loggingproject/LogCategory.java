@@ -1,9 +1,11 @@
 package com.es2.loggingproject;
 
+// COMPOSITE PATTERN: COMPOSITE
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogCategory implements LogComponent {
+public class LogCategory extends LogComponent {
+
     private final String name;
     private final List<LogComponent> children = new ArrayList<>();
 
@@ -11,18 +13,17 @@ public class LogCategory implements LogComponent {
         this.name = name;
     }
 
+    public String getName() { return name; }
+
     public void add(LogComponent component)    { children.add(component); }
     public void remove(LogComponent component) { children.remove(component); }
     public List<LogComponent> getChildren()    { return children; }
 
     @Override
-    public String getName() { return name; }
-
-    @Override
     public void outputTo(LogDestinationInterface destination) {
-        System.out.println("[CATEGORY: " + name + "]");
         for (LogComponent child : children) {
             child.outputTo(destination);
         }
     }
+
 }

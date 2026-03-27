@@ -11,6 +11,7 @@ public class Logger {
     private boolean meetsMinLevel(LogRecordInterface record) {
         return record.getLevel().ordinal() >= LogConfig.INSTANCE.getMinimumLevel().ordinal();
     }
+
     public String addDestination(LogDestinationInterface destination) {
         String id = String.valueOf(destinations.size() + 1);
         destinations.put(id, destination);
