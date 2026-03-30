@@ -49,13 +49,13 @@ Logger.logAllDestinations(record)
 ------------------------------------------------------------------------------
 
 ### M4 — Composite
-**Objetivo:** organizar registos de log em categorias hierárquicas (autenticação, base de dados, rede, etc.), tratando grupos e entradas individuais de forma uniforme através de uma interface comum.
+**Objetivo:** organizar registos de log em categorias hierárquicas (autenticação, base de dados, rede, etc.), tratando folhas (entradas individuais) e compostos (categorias) de forma uniforme através de uma interface comum.
 
-`LogComponent` — classe abstrata Component que define o contrato uniforme para folha e composto: `outputTo(LogDestinationInterface destination)`. É o único tipo que o cliente manipula, independentemente de estar a lidar com uma entrada individual ou uma árvore de categorias.
+`LogComponent` — COMPONENT: Classe abstrata que define o contrato comum: `outputTo(LogDestinationInterface destination)` e `getLevel(): LogLevel`. É o tipo base que o cliente manipula.
 
-`LogEntry` — Leaf que encapsula um `LogRecordInterface` individual. Implementa `outputTo()` consultando `LogConfig.INSTANCE` para verificar o nível mínimo antes de delegar a escrita ao destino recebido — comportamento consistente com o `Logger` do M3.
+`LogEntry` — LEAF: que encapsula um `LogRecordInterface` individual. Implementa `outputTo()` consultando `LogConfig.INSTANCE` para verificar o nível mínimo antes de delegar a escrita ao destino recebido — comportamento consistente com o `Logger` do M3. Implementa `getLevel()` devolvendo o nível do registo.
 
-`LogCategory` — Composite que agrega uma `List<LogComponent>` e expõe `add()`, `remove()`, `getChildren()` e `getName()`. Implementa `outputTo()` iterando sobre os filhos e delegando recursivamente, sem conhecer se cada filho é um `LogEntry` ou outra `LogCategory`. Permite aninhar categorias arbitrariamente.
+`LogCategory` — COMPOSITE: Agrega uma `List<LogComponent>` e expõe `add()`, `remove()`, `getChildren()` e `getName()`. Implementa `outputTo()` com delegação recursiva aos filhos e `getLevel()` retornando `null` (não tem nível único), sem conhecer se cada filho é um `LogEntry` ou outra `LogCategory`. Permite aninhar categorias arbitrariamente.
 
 ------------------------------------------------------------------------------
 
@@ -98,15 +98,40 @@ Logger.logAllDestinations(record)
 
 **Nota importante:** apenas a estrutura (configuração + categorias + destinos) é preservada — os `LogEntry` são ignorados por não representarem estado estrutural.
 
+------------------------------------------------------------------------------
+
+### M7 — Decorator
+**Objetivo:** Adicionar responsabilidades dinâmicas (categoria e monitorização) aos componentes de log sem alterar as classes existentes (`LogEntry` e `LogCategory`).
+
+* `LogDecorator` — Classe abstrata base do Decorator. Estende `LogComponent` e mantém uma referência (`wrapped`) ao componente decorado. Delega `outputTo()` e `getLevel()` por defeito.
+* `CategoryDecorator` — Adiciona contexto de categoria ao log. Guarda o nome da categoria e permite que seja recuperado ao longo da cadeia através de `getCategoryName()`.
+* `MonitoringDecorator` — Adiciona monitorização: conta logs por nível (`debugLogCounter`, `infoLogCounter`, etc.), verifica threshold e emite alertas quando excedido. Expõe `getSummary()` e getters para contagens.
+
+**Dinâmica:** Os decorators formam uma cadeia linear aplicada sobre nós da árvore Composite. O cliente chama `outputTo()` no decorator mais externo, que adiciona comportamento antes de delegar para o próximo.
+
+**Integração com Composite:** Qualquer `LogComponent` (LogEntry ou LogCategory) pode ser embrulhado. `MonitoringDecorator` e `CategoryDecorator` mantêm compatibilidade total com o tipo `LogComponent`.
+
 
 ------------------------------------------------------------------------------
 ### Ligação entre os cinco padrões
-```
+
 LogConfig.INSTANCE (M1)  →  consultado em LogRecord.format(), Logger.meetsMinLevel() e LogEntry.outputTo()
 LogCreator (M2)          →  cria LogRecordInterface passado ao Logger (M3) ou encapsulado em LogEntry (M4)
 Logger (M3)              →  recebe LogRecordInterface de M2 e distribui pelos destinos
 LogCategory (M4)         →  outputTo() recebe LogDestinationInterface de M3; delega aos filhos
 LogEntry (M4)            →  encapsula LogRecordInterface de M2; filtra via M1; escreve via M3
 DestinationPool (M5)     →  inicializado com List<LogCategory> de M4; gere FileDestination de M3
-```
-M2 e M3 permanecem independentes entre si. M4 integra-se com os três módulos anteriores exclusivamente através do `LogEntry`. M5 liga-se a M4 na inicialização (nomes das categorias determinam os ficheiros) e a M3 na operação (as instâncias poolizadas implementam `LogDestinationInterface`).
+LogSystemMemento / Caretaker (M6) → faz backup/restore da estrutura de M4 (categorias),
+configurações de M1 e destinos de M3
+LogDecorator (M7)         →  embrulha qualquer LogComponent (LogEntry ou LogCategory);
+adiciona comportamento dinâmico (categoria + monitorização)
+
+**Integrações principais:**
+
+- M2 e M3 permanecem independentes entre si.
+- M4 (Composite) serve de base para integração com M1, M2 e M3, principalmente através do `LogEntry`. Foi também estendido com o método `getLevel()` para suportar o M7.
+- M5 (Object Pool) liga-se a M4 na inicialização e a M3 na operação.
+- M6 (Memento) preserva o estado estrutural de M1, M3 e M4.
+- M7 (Decorator) integra-se diretamente com M4, permitindo decorar qualquer `LogComponent` de forma dinâmica e transparente sem alterar classes existentes.
+
+Esta arquitetura mantém os padrões bem desacoplados, com `LogComponent` como ponto central de ligação entre Composite e Decorator.

@@ -16,3 +16,11 @@
 [INFO] [2026-03-30T01:11:05.219894900]: Sistema iniciado.
 [ERROR] [2026-03-30T01:11:05.227413300]: Erro para o ficheiro.
 [ERROR] [2026-03-30T01:11:05.228413900]: Erro no registo de dados.
+[INFO] [2026-03-30T17:53:06.071278400]: Sistema iniciado.
+[ERROR] [2026-03-30T17:53:06.097276500]: Erro para o ficheiro.
+[ERROR] [2026-03-30T17:53:06.108275600]: Erro no registo de dados.
+[INFO] [2026-03-30T17:53:06.179795800]: Log após restore do Memento.
+[INFO] [2026-03-30T17:54:07.775748700]: Sistema iniciado.
+[ERROR] [2026-03-30T17:54:07.779748900]: Erro para o ficheiro.
+[ERROR] [2026-03-30T17:54:07.780748900]: Erro no registo de dados.
+[INFO] [2026-03-30T17:54:07.787748400]: Log após restore do Memento.

@@ -22,11 +22,11 @@
 
 ## M4 - COMPOSITE PATTERN
 *Component*
-* [LogComponent] — Classe abstrata que define o contrato uniforme para folha e composto: `outputTo(LogDestinationInterface destination)`. É o único tipo que o cliente manipula.
+* [LogComponent] — Classe abstrata que define o contrato uniforme para folha e composto: `outputTo(LogDestinationInterface destination)` e `getLevel(): LogLevel`. É o único tipo que o cliente manipula.
 *Leaf*
-* [LogEntry] — Encapsula um [LogRecordInterface] individual. Implementa `outputTo()` verificando o nível mínimo via [LogConfig] (M1) antes de delegar a escrita ao destino recebido.
+* [LogEntry] — Encapsula um [LogRecordInterface] individual. Implementa `outputTo()` verificando o nível mínimo via [LogConfig] (M1) antes de delegar a escrita ao destino recebido e `getLevel()`..
 *Composite*
-* [LogCategory] — Agrega uma `List<LogComponent>` e expõe `add()`, `remove()`, `getChildren()` e `getName()`. Implementa `outputTo()` delegando recursivamente aos filhos, sem distinguir se são [LogEntry] ou outra [LogCategory].
+* [LogCategory] — Agrega uma `List<LogComponent>` e expõe `add()`, `remove()`, `getChildren()` e `getName()`. Implementa `outputTo()` delegando recursivamente aos filhos, sem distinguir se são [LogEntry] ou outra [LogCategory], e `getLevel()` retornando `null`.
 > O cliente selecciona o nó a partir do qual invoca `outputTo()` — essa escolha é a filtragem por categoria.
 
 ## M5 - OBJECT POOL
@@ -51,3 +51,11 @@
 * [LogSystemCaretaker] — gere histórico de snapshots:
   - `takeSnapshot()`
   - `restoreSnapshot(index)`
+
+
+## M7 - DECORATOR PATTERN
+* [LogDecorator] — Classe abstrata base que estende `LogComponent`. Mantém referência ao componente decorado (`wrapped`) e delega os métodos base.
+* [CategoryDecorator] — Estende `LogDecorator`. Adiciona e transporta o nome da categoria ao longo da cadeia de decoração.
+* [MonitoringDecorator] — Estende `LogDecorator`. Conta logs por nível (DEBUG, INFO, WARNING, ERROR), verifica threshold configurável e emite alertas. Fornece `getSummary()` e getters para consulta.
+
+> Permite enriquecer dinamicamente logs ou categorias com comportamento adicional sem modificar classes existentes. A cadeia de decorators é aplicada sobre a árvore do Composite.

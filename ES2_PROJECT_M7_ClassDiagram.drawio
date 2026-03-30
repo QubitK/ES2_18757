@@ -1,9 +1,12 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:148.0) Gecko/20100101 Firefox/148.0" version="29.6.6">
   <diagram name="Page-1" id="MB5FVHacuLd4uOwT7sOv">
-    <mxGraphModel dx="-7567" dy="5705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
+    <mxGraphModel dx="-8154" dy="5362" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-8" parent="1" style="whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" value="" vertex="1">
+          <mxGeometry height="450" width="1030" x="14670" y="-750" as="geometry" />
+        </mxCell>
         <mxCell id="i9-KzoQfDsGTtvrvDCM1-26" parent="1" style="whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" value="" vertex="1">
           <mxGeometry height="550" width="1310" x="13460" y="-60" as="geometry" />
         </mxCell>
@@ -44,7 +47,7 @@
         <mxCell id="otnJid7jwBEgxu8F95MJ-3" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;dashed=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;LogRecordInterface&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;br&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getLevel(): LogLevel&lt;br&gt;+ getMessage(): String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getTimestamp(): String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ format(): String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ outputLog(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
           <mxGeometry height="160" width="200" x="12920" y="-987" as="geometry" />
         </mxCell>
-        <mxCell id="otnJid7jwBEgxu8F95MJ-14" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;dashed=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;LogRecord&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;# level LogLevel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;# message String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;# timestamp String&amp;nbsp;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ LogRecord (log LogLevel, message String)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ getLevel() : LogLevel&lt;br&gt;&amp;nbsp;+ getMessage() : String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ getTimestamp() : String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ format() : String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ outputLog() : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;" vertex="1">
+        <mxCell id="otnJid7jwBEgxu8F95MJ-14" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;dashed=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;LogRecord&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;# level LogLevel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;# message String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;# timestamp String&amp;nbsp;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ LogRecord (log LogLevel, message String)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ getLevel() : LogLevel&lt;br&gt;&amp;nbsp;+ getMessage() : String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ getTimestamp() : String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ format() : String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ outputFormatted() : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;" vertex="1">
           <mxGeometry height="200" width="290" x="13170" y="-1250" as="geometry" />
         </mxCell>
         <mxCell id="otnJid7jwBEgxu8F95MJ-22" edge="1" parent="1" source="otnJid7jwBEgxu8F95MJ-39" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;dashed=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="otnJid7jwBEgxu8F95MJ-42" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;Extends&lt;/font&gt;">
@@ -271,9 +274,9 @@
         <mxCell id="otnJid7jwBEgxu8F95MJ-115" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;dashed=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;LogDestinationInterface&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ write (log: LogRecordInterface) : void&lt;/p&gt;" vertex="1">
           <mxGeometry height="100" width="230" x="13380" y="-385" as="geometry" />
         </mxCell>
-        <mxCell id="otnJid7jwBEgxu8F95MJ-117" edge="1" parent="1" source="otnJid7jwBEgxu8F95MJ-96" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" target="otnJid7jwBEgxu8F95MJ-14" value="&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Use&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;dependency&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;">
-          <mxGeometry relative="1" width="160" x="-0.7297" as="geometry">
-            <mxPoint as="offset" />
+        <mxCell id="otnJid7jwBEgxu8F95MJ-117" edge="1" parent="1" source="otnJid7jwBEgxu8F95MJ-96" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.793;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="otnJid7jwBEgxu8F95MJ-14" value="&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Use&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;dependency&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" width="160" x="-0.5262" y="2" as="geometry">
+            <mxPoint y="1" as="offset" />
             <mxPoint x="13390" y="-697" as="sourcePoint" />
             <mxPoint x="13510" y="-700" as="targetPoint" />
           </mxGeometry>
@@ -308,7 +311,7 @@
         <mxCell id="otnJid7jwBEgxu8F95MJ-127" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;&lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 0, 0));&quot;&gt;M3 : BRIDGE&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="40" width="195" x="12630" y="-740" as="geometry" />
         </mxCell>
-        <mxCell id="otnJid7jwBEgxu8F95MJ-129" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;dashed=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstraction&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;LogComponent&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;br&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ outputTo (destination: LogDestinationInterface): void&lt;/p&gt;" vertex="1">
+        <mxCell id="otnJid7jwBEgxu8F95MJ-129" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;dashed=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstraction&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;LogComponent&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;br&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ outputTo (destination: LogDestinationInterface): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getLevel() : LogLevel&lt;/p&gt;" vertex="1">
           <mxGeometry height="120" width="300" x="13880" y="-420" as="geometry" />
         </mxCell>
         <mxCell id="otnJid7jwBEgxu8F95MJ-134" edge="1" parent="1" source="otnJid7jwBEgxu8F95MJ-130" style="edgeStyle=orthogonalEdgeStyle;shape=wire;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;dashed=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="otnJid7jwBEgxu8F95MJ-3">
@@ -316,11 +319,11 @@
             <mxPoint x="13894.307692307691" y="-860.0000000000005" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="otnJid7jwBEgxu8F95MJ-130" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;dashed=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LogEntry&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&amp;nbsp; - record LogRecordInterface&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ LogEntry (record: LogRecordInterface)&lt;br&gt;+ outputTo (destination: LogDestinationInterface): void&lt;/p&gt;" vertex="1">
-          <mxGeometry height="120" width="300" x="13860" y="-715" as="geometry" />
+        <mxCell id="otnJid7jwBEgxu8F95MJ-130" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;dashed=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LogEntry&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&amp;nbsp; - record LogRecordInterface&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ LogEntry (record: LogRecordInterface)&lt;br&gt;+ outputTo (destination: LogDestinationInterface): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getLevel() : LogLevel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getName() : String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="135" width="300" x="13860" y="-715" as="geometry" />
         </mxCell>
-        <mxCell id="otnJid7jwBEgxu8F95MJ-131" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;dashed=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LogCategory&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div&gt;&amp;nbsp; - name String&lt;/div&gt;&lt;div&gt;&amp;nbsp; - children List&amp;lt;LogComponent&amp;gt;&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ LogCategory(name: String)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ add (component : LogComponent) : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ remove (component : LogComponent) : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getChildren() : List&amp;lt;LogComponent&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getName () : String&lt;br&gt;+ outputTo (destination: LogDestinationInterface): void&lt;/p&gt;" vertex="1">
-          <mxGeometry height="170" width="300" x="14270" y="-750" as="geometry" />
+        <mxCell id="otnJid7jwBEgxu8F95MJ-131" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;dashed=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LogCategory&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div&gt;&amp;nbsp; - name String&lt;/div&gt;&lt;div&gt;&amp;nbsp; - children List&amp;lt;LogComponent&amp;gt;&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ LogCategory(name: String)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ add (component : LogComponent) : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ remove (component : LogComponent) : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getChildren() : List&amp;lt;LogComponent&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getName () : String&lt;br&gt;+ outputTo (destination: LogDestinationInterface): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getLevel() : LogLevel&lt;/p&gt;" vertex="1">
+          <mxGeometry height="190" width="300" x="14270" y="-750" as="geometry" />
         </mxCell>
         <mxCell id="otnJid7jwBEgxu8F95MJ-132" edge="1" parent="1" source="otnJid7jwBEgxu8F95MJ-129" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="otnJid7jwBEgxu8F95MJ-115" value="&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Use&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;dependency&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;">
           <mxGeometry relative="1" width="160" x="-0.4815" as="geometry">
@@ -541,6 +544,75 @@
         </mxCell>
         <mxCell id="i9-KzoQfDsGTtvrvDCM1-27" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;&lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 0, 0));&quot;&gt;M6 : MEMENTO&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="40" width="195" x="14575" y="-100" as="geometry" />
+        </mxCell>
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-1" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;LogDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div&gt;&amp;nbsp; - wrapped : LogComponent&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ LogDecorator (wrapped LogComponent)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ outputTo (destination LogDestinationInterface) : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getLevel() : LogLevel&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getCategoryName() : String&amp;nbsp;&amp;nbsp;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="140" width="320" x="14760" y="-480" as="geometry" />
+        </mxCell>
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-2" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CategoryDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div&gt;&amp;nbsp; - categoryName: String&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CategoryDecorator (wrapped LogComponent, categoryName String)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ outputTo(destination LogDestinationInterface) : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getCategoryName() : String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="400" x="14720" y="-707.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-3" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MonitoringDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div&gt;&amp;nbsp; - debugLogCounter : int&lt;/div&gt;&lt;div&gt;&amp;nbsp; - infoLogCounter : int&lt;/div&gt;&lt;div&gt;&amp;nbsp; - warningLogCounter : int&lt;/div&gt;&lt;div&gt;&amp;nbsp; - errorLogCounter : int&lt;/div&gt;&lt;div&gt;&amp;nbsp; - alertThreshold : int&lt;/div&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MonitoringDecorator (wrapped LogComponent)&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MonitoringDecorator (wrapped LogComponent, alertThreshold int)&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ outputTo(destination LogDestinationInterface) : void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getSummary () : String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getDebugCount() : int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getInfoCount() : int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getWarnignCount() : int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getErrorCount() : int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getTotalCount() : int&lt;/p&gt;" vertex="1">
+          <mxGeometry height="280" width="380" x="15270" y="-670" as="geometry" />
+        </mxCell>
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-5" edge="1" parent="1" source="AEULl1TG3hMG2Q4FzNYm-1" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="otnJid7jwBEgxu8F95MJ-129" value="Extends">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <Array as="points">
+              <mxPoint x="14650" y="-375" />
+              <mxPoint x="14650" y="-330" />
+            </Array>
+            <mxPoint x="14460" y="-300" as="sourcePoint" />
+            <mxPoint x="14620" y="-300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-6" edge="1" parent="1" source="AEULl1TG3hMG2Q4FzNYm-1" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="AEULl1TG3hMG2Q4FzNYm-2" value="Extends">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="14960" y="-520.71" as="sourcePoint" />
+            <mxPoint x="15120" y="-520.71" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-7" edge="1" parent="1" source="AEULl1TG3hMG2Q4FzNYm-1" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="AEULl1TG3hMG2Q4FzNYm-3" value="Extends">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <Array as="points">
+              <mxPoint x="15190" y="-410" />
+              <mxPoint x="15190" y="-530" />
+            </Array>
+            <mxPoint x="15170" y="-240.00000000000006" as="sourcePoint" />
+            <mxPoint x="15190" y="-540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;&lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 0, 0));&quot;&gt;M7 : DECORATOR&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="200" x="15500" y="-790" as="geometry" />
+        </mxCell>
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-10" edge="1" parent="1" source="AEULl1TG3hMG2Q4FzNYm-1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="otnJid7jwBEgxu8F95MJ-129" value="1">
+          <mxGeometry relative="1" x="-1" y="3" as="geometry">
+            <Array as="points">
+              <mxPoint x="14620" y="-410" />
+              <mxPoint x="14620" y="-360" />
+            </Array>
+            <mxPoint x="14560" y="-390" as="sourcePoint" />
+            <mxPoint x="14720" y="-390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-11" edge="1" parent="1" source="AEULl1TG3hMG2Q4FzNYm-1" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="AEULl1TG3hMG2Q4FzNYm-2" value="&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Use&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;dependency&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" width="160" x="-0.0639" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <Array as="points">
+              <mxPoint x="14750" y="-530" />
+            </Array>
+            <mxPoint x="14810" y="-624.5" as="sourcePoint" />
+            <mxPoint x="14920" y="-505.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AEULl1TG3hMG2Q4FzNYm-12" edge="1" parent="1" source="AEULl1TG3hMG2Q4FzNYm-1" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="otnJid7jwBEgxu8F95MJ-131" value="&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Use&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;dependency&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" width="160" x="-0.0639" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <Array as="points">
+              <mxPoint x="14630" y="-445" />
+              <mxPoint x="14630" y="-655" />
+            </Array>
+            <mxPoint x="14640" y="-560" as="sourcePoint" />
+            <mxPoint x="14630" y="-660" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

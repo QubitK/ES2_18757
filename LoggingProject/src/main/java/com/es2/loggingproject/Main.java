@@ -8,12 +8,15 @@ import com.es2.loggingproject.M3_bridge_destination.FileDestination;
 import com.es2.loggingproject.M3_bridge_destination.LogDestinationInterface;
 import com.es2.loggingproject.M3_bridge_destination.Logger;
 import com.es2.loggingproject.M4_composite_category.LogCategory;
+import com.es2.loggingproject.M4_composite_category.LogComponent;
 import com.es2.loggingproject.M4_composite_category.LogEntry;
 import com.es2.loggingproject.M5_object_pool_destination.DestinationPool;
 import com.es2.loggingproject.M5_object_pool_destination.ObjectNotFoundException;
 import com.es2.loggingproject.M5_object_pool_destination.PoolExhaustedException;
 import com.es2.loggingproject.M6_memento_system_backup.LogSystemCaretaker;
 import com.es2.loggingproject.M6_memento_system_backup.LogSystemOriginator;
+import com.es2.loggingproject.M7_decorator_monitoring.CategoryDecorator;
+import com.es2.loggingproject.M7_decorator_monitoring.MonitoringDecorator;
 
 import java.io.IOException;
 import java.util.List;
@@ -34,7 +37,7 @@ public class Main {
 
 
         // M3: BRIDGE PATTERN
-        System.out.println("\n\n==========================  M6: BRIDGE PATTERN ==========================");
+        System.out.println("\n\n==========================  M3: BRIDGE PATTERN ==========================");
 
         Logger logger = new Logger();
         ConsoleDestination Consola = new ConsoleDestination();
@@ -49,7 +52,7 @@ public class Main {
 
 
         // M4: COMPOSITE PATTERN
-        System.out.println("\n\n========================= M6: COMPOSITE PATTERN =========================");
+        System.out.println("\n\n========================= M4: COMPOSITE PATTERN =========================");
 
         LogCategory auth = new LogCategory("Autenticação");
         auth.add(new LogEntry(Info_Creator.createLog("Autenticação efetuada com sucesso.")));
@@ -74,7 +77,7 @@ public class Main {
 
 
         // M5: OBJECT POOL - Pool of Destination objects, criados por categorias existentes
-        System.out.println("\n\n============================ M6: OBJECT POOL ============================");
+        System.out.println("\n\n============================ M5: OBJECT POOL ============================");
         DestinationPool pool = null;
         try {
             pool = DestinationPool.getInstance(List.of(auth, db));
@@ -138,9 +141,63 @@ public class Main {
         logger.logAllDestinations(Info_Creator.createLog("Log após restore do Memento."));
         logger.logAllDestinations(Debug_Creator.createLog("Este DEBUG não deve aparecer (nível mínimo: INFO)."));
 
+        // M7: DECORATOR PATTERN
+        System.out.println("\n\n============================= M7: DECORATOR =============================");
 
-        // CLOSE ALL OPENED WRITERS IN THE POOL
-        assert pool != null;
-        pool.close();
+        // === Exemplo 1: Decorar entradas individuais ===
+        System.out.println("\n--- Exemplo com Monitoring + Category Decorator ---");
+
+        LogRecordInterface loginRecord = Info_Creator.createLog("Utilizador admin efetuou login.");
+        LogComponent loginEntry = new LogEntry(loginRecord);
+
+        // Cadeia: MonitoringDecorator → CategoryDecorator → LogEntry
+        LogComponent monitoredLogin = new MonitoringDecorator(
+                new CategoryDecorator(loginEntry, "AUTH")
+        );
+
+        LogCategory authDecorated = new LogCategory("Autenticação Decorada");
+        authDecorated.add(monitoredLogin);
+
+        System.out.println("Executando output com decorators...");
+        authDecorated.outputTo(Consola);
+
+        // Mostrar resumo do monitoring
+        if (monitoredLogin instanceof MonitoringDecorator md) {
+            System.out.println(md.getSummary());
+        }
+
+        // === Exemplo 2: Decorar com threshold baixo para forçar alerta ===
+        System.out.println("\n--- Exemplo com threshold baixo (alerta deve disparar) ---");
+
+        LogComponent errorEntry = new LogEntry(Error_Creator.createLog("Falha crítica no sistema."));
+
+        LogComponent monitoredError = new MonitoringDecorator(
+                new CategoryDecorator(errorEntry, "SECURITY"),
+                3   // threshold muito baixo para demonstrar o alerta
+        );
+
+        LogCategory security = new LogCategory("Segurança");
+        security.add(monitoredError);
+
+        // Executar várias vezes para ultrapassar o threshold
+        for (int i = 0; i < 5; i++) {
+            security.outputTo(Consola);
+        }
+
+        if (monitoredError instanceof MonitoringDecorator md) {
+            System.out.println(md.getSummary());
+        }
+
+        // ====================== FECHO DE RECURSOS ======================
+        System.out.println("\n\nFechando recursos abertos...");
+        if (pool != null) {
+            try {
+                pool.close();   // método que deve existir no teu DestinationPool
+            } catch (Exception e) {
+                System.err.println("Erro ao fechar pool: " + e.getMessage());
+            }
+        }
+
+        System.out.println("\n============================= FIM DO PROGRAMA =============================");
     }
 }

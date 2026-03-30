@@ -1,6 +1,7 @@
 package com.es2.loggingproject.M4_composite_category;
 
 // COMPOSITE PATTERN: COMPOSITE
+import com.es2.loggingproject.M1_config.LogLevel;
 import com.es2.loggingproject.M3_bridge_destination.LogDestinationInterface;
 
 import java.util.ArrayList;
@@ -26,6 +27,11 @@ public class LogCategory extends LogComponent {
         for (LogComponent child : children) {
             child.outputTo(destination);
         }
+    }
+
+    @Override
+    public LogLevel getLevel() {
+        return null; // Composite não tem nível único
     }
 
 }

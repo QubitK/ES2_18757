@@ -4,3 +4,5 @@
 [ERROR] [2026-03-30T00:42:52.567393100]: Erro no registo de dados.
 [ERROR] [2026-03-30T01:11:03.366179600]: Erro no registo de dados.
 [ERROR] [2026-03-30T01:11:05.228413900]: Erro no registo de dados.
+[ERROR] [2026-03-30T17:53:06.108275600]: Erro no registo de dados.
+[ERROR] [2026-03-30T17:54:07.780748900]: Erro no registo de dados.
