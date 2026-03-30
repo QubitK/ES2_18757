@@ -1,6 +1,8 @@
-package com.es2.loggingproject;
+package com.es2.loggingproject.M4_composite_category;
 
 // COMPOSITE PATTERN: COMPOSITE
+import com.es2.loggingproject.M3_bridge_destination.LogDestinationInterface;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.es2.loggingproject;
+package com.es2.loggingproject.M5_object_pool_destination;
 
 // Exceção lançada quando se tenta adquirir uma conexão mas o pool está esgotado (sem conexões disponíveis)
 public class PoolExhaustedException extends Exception {

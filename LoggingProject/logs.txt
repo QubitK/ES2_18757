@@ -1,3 +1,18 @@
 [INFO] [2026-03-27T14:22:07.033305]: Sistema iniciado.
 [ERROR] [2026-03-27T14:22:07.041302]: Erro para o ficheiro.
 [ERROR] [2026-03-27T14:22:07.042302100]: Erro no registo de dados.
+[INFO] [2026-03-30T00:42:48.618911800]: Sistema iniciado.
+[ERROR] [2026-03-30T00:42:48.639950400]: Erro para o ficheiro.
+[ERROR] [2026-03-30T00:42:48.653478300]: Erro no registo de dados.
+[INFO] [2026-03-30T00:42:50.611246200]: Sistema iniciado.
+[ERROR] [2026-03-30T00:42:50.617761400]: Erro para o ficheiro.
+[ERROR] [2026-03-30T00:42:50.618767700]: Erro no registo de dados.
+[INFO] [2026-03-30T00:42:52.560877600]: Sistema iniciado.
+[ERROR] [2026-03-30T00:42:52.566393400]: Erro para o ficheiro.
+[ERROR] [2026-03-30T00:42:52.567393100]: Erro no registo de dados.
+[INFO] [2026-03-30T01:11:03.318070100]: Sistema iniciado.
+[ERROR] [2026-03-30T01:11:03.354665200]: Erro para o ficheiro.
+[ERROR] [2026-03-30T01:11:03.366179600]: Erro no registo de dados.
+[INFO] [2026-03-30T01:11:05.219894900]: Sistema iniciado.
+[ERROR] [2026-03-30T01:11:05.227413300]: Erro para o ficheiro.
+[ERROR] [2026-03-30T01:11:05.228413900]: Erro no registo de dados.

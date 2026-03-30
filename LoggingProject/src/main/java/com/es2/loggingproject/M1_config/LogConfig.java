@@ -1,4 +1,4 @@
-package com.es2.loggingproject;
+package com.es2.loggingproject.M1_config;
 
 public enum LogConfig {
 

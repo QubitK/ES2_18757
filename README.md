@@ -35,3 +35,19 @@
 * [ObjectNotFoundException] — lançada por `release()` quando a instância devolvida não pertence ao pool.
 * [FileDestination] (alteração face a M3) — `FileWriter` mantido aberto persistentemente; `flush()` explícito após cada `write()`; expõe `close()` para libertação do recurso.
 > [ConsoleDestination] não é poolizada — não mantém recursos persistentes.
+
+## M6 - MEMENTO PATTERN
+* [LogSystemMemento] — snapshot imutável do estado:
+  - nível mínimo (`LogLevel`)
+  - destinos (id → filePath)
+  - categorias (estrutura sem LogEntry)
+* [LogSystemOriginator] — responsável por:
+  - `backup()` → cria snapshot
+  - `restore()` → restaura:
+    - LogConfig
+    - destinos do Logger
+    - categorias
+    - reinicializa `DestinationPool`
+* [LogSystemCaretaker] — gere histórico de snapshots:
+  - `takeSnapshot()`
+  - `restoreSnapshot(index)`

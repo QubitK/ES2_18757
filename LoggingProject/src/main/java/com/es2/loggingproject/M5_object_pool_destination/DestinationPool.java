@@ -1,8 +1,14 @@
-package com.es2.loggingproject;
+package com.es2.loggingproject.M5_object_pool_destination;
+
+import com.es2.loggingproject.M3_bridge_destination.FileDestination;
+import com.es2.loggingproject.M3_bridge_destination.LogDestinationInterface;
+import com.es2.loggingproject.M4_composite_category.LogCategory;
 
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+
+// Constructor creates as much destination files for each LogCategory passed as param via getInstance
 
 public class DestinationPool {
 
@@ -41,4 +47,25 @@ public class DestinationPool {
         }
         available.add(dest);
     }
+
+    public synchronized void close() throws IOException {
+        for (LogDestinationInterface dest : available) {
+            if (dest instanceof FileDestination fd) fd.close();
+        }
+        for (LogDestinationInterface dest : inUse) {
+            if (dest instanceof FileDestination fd) fd.close();
+        }
+    }
+
+    // Fecha todos os FileWriter abertos e permite reinicialização do Singleton
+    public static synchronized void reset() throws IOException {
+        if (instance == null) return;
+        instance.close();
+        instance.available.clear();
+        instance.inUse.clear();
+        instance = null;
+    }
+
+
+
 }

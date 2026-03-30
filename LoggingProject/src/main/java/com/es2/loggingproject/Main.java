@@ -1,5 +1,20 @@
 package com.es2.loggingproject;
 
+import com.es2.loggingproject.M1_config.LogConfig;
+import com.es2.loggingproject.M1_config.LogLevel;
+import com.es2.loggingproject.M2_factory.*;
+import com.es2.loggingproject.M3_bridge_destination.ConsoleDestination;
+import com.es2.loggingproject.M3_bridge_destination.FileDestination;
+import com.es2.loggingproject.M3_bridge_destination.LogDestinationInterface;
+import com.es2.loggingproject.M3_bridge_destination.Logger;
+import com.es2.loggingproject.M4_composite_category.LogCategory;
+import com.es2.loggingproject.M4_composite_category.LogEntry;
+import com.es2.loggingproject.M5_object_pool_destination.DestinationPool;
+import com.es2.loggingproject.M5_object_pool_destination.ObjectNotFoundException;
+import com.es2.loggingproject.M5_object_pool_destination.PoolExhaustedException;
+import com.es2.loggingproject.M6_memento_system_backup.LogSystemCaretaker;
+import com.es2.loggingproject.M6_memento_system_backup.LogSystemOriginator;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -19,6 +34,8 @@ public class Main {
 
 
         // M3: BRIDGE PATTERN
+        System.out.println("\n\n==========================  M6: BRIDGE PATTERN ==========================");
+
         Logger logger = new Logger();
         ConsoleDestination Consola = new ConsoleDestination();
         FileDestination File = new FileDestination("logs.txt");
@@ -32,6 +49,8 @@ public class Main {
 
 
         // M4: COMPOSITE PATTERN
+        System.out.println("\n\n========================= M6: COMPOSITE PATTERN =========================");
+
         LogCategory auth = new LogCategory("Autenticação");
         auth.add(new LogEntry(Info_Creator.createLog("Autenticação efetuada com sucesso.")));
         auth.add(new LogEntry(Warning_Creator.createLog("Autenticação falhou.")));
@@ -55,8 +74,10 @@ public class Main {
 
 
         // M5: OBJECT POOL - Pool of Destination objects, criados por categorias existentes
+        System.out.println("\n\n============================ M6: OBJECT POOL ============================");
+        DestinationPool pool = null;
         try {
-            DestinationPool pool = DestinationPool.getInstance(List.of(auth, db));
+            pool = DestinationPool.getInstance(List.of(auth, db));
 
             LogDestinationInterface destAuth = pool.acquire();
             auth.outputTo(destAuth);
@@ -70,5 +91,56 @@ public class Main {
             System.err.println("Pool error: " + e.getMessage());
         }
 
+        // M6: MEMENTO PATTERN
+        System.out.println("\n\n============================== M6: MEMENTO ==============================");
+
+        LogSystemCaretaker caretaker = new LogSystemCaretaker(new LogSystemOriginator(logger, List.of(auth, db)));
+
+        // Estado inicial: nível INFO, destinations logs.txt + consola
+        System.out.println("\n--- Estado inicial ---");
+        System.out.println("Nível mínimo: " + LogConfig.INSTANCE.getMinimumLevel());
+        System.out.println("Destinations: " + logger.getDestinations().keySet());
+
+        // Snapshot 1 — guarda estado inicial
+        caretaker.takeSnapshot();
+
+        // Alteração de estado
+        System.out.println("\n--- Alteração de estado ---");
+        LogConfig.INSTANCE.setMinimumLevel(LogLevel.ERROR);
+        logger.addDestination(new FileDestination("extra.txt"));
+        System.out.println("Nível mínimo: " + LogConfig.INSTANCE.getMinimumLevel());
+        System.out.println("Destinations: " + logger.getDestinations().keySet());
+
+        // Snapshot 2 — guarda estado alterado
+        caretaker.takeSnapshot();
+
+        // Nova alteração
+        System.out.println("\n--- Nova alteração de estado ---");
+        LogConfig.INSTANCE.setMinimumLevel(LogLevel.DEBUG);
+        logger.clearDestinations();
+        System.out.println("Nível mínimo: " + LogConfig.INSTANCE.getMinimumLevel());
+        System.out.println("Destinations: " + logger.getDestinations().keySet());
+
+        // Restore para snapshot 2
+        System.out.println("\n--- Restore para snapshot 2 ---");
+        caretaker.restoreSnapshot(1);
+        System.out.println("Nível mínimo: " + LogConfig.INSTANCE.getMinimumLevel());
+        System.out.println("Destinations: " + logger.getDestinations().keySet());
+
+        // Restore para snapshot 1
+        System.out.println("\n--- Restore para snapshot 1 ---");
+        caretaker.restoreSnapshot(0);
+        System.out.println("Nível mínimo: " + LogConfig.INSTANCE.getMinimumLevel());
+        System.out.println("Destinations: " + logger.getDestinations().keySet());
+
+        // Verificação: log com nível restaurado (INFO) — deve aparecer
+        System.out.println("\n--- Verificação após restore ---");
+        logger.logAllDestinations(Info_Creator.createLog("Log após restore do Memento."));
+        logger.logAllDestinations(Debug_Creator.createLog("Este DEBUG não deve aparecer (nível mínimo: INFO)."));
+
+
+        // CLOSE ALL OPENED WRITERS IN THE POOL
+        assert pool != null;
+        pool.close();
     }
 }

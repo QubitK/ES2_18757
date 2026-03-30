@@ -1,4 +1,4 @@
-package com.es2.loggingproject;
+package com.es2.loggingproject.M2_factory;
 
 public class DebugLogCreator extends LogCreator {
 

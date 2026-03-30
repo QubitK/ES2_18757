@@ -1,4 +1,4 @@
-package com.es2.loggingproject;
+package com.es2.loggingproject.M5_object_pool_destination;
 
 // Exceção lançada quando se tenta devolver ao pool uma conexão que não lhe pertence
 public class ObjectNotFoundException extends Exception {

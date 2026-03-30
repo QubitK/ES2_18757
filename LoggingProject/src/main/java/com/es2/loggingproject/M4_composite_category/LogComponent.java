@@ -1,4 +1,6 @@
-package com.es2.loggingproject;
+package com.es2.loggingproject.M4_composite_category;
+
+import com.es2.loggingproject.M3_bridge_destination.LogDestinationInterface;
 
 // COMPOSITE PATTERN: COMPONENT
 public abstract class LogComponent {

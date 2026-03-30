@@ -1,4 +1,6 @@
-package com.es2.loggingproject;
+package com.es2.loggingproject.M3_bridge_destination;
+
+import com.es2.loggingproject.M2_factory.LogRecordInterface;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,17 +15,25 @@ public class FileDestination implements LogDestinationInterface {
         this.writer   = new FileWriter(filePath, true); // persistent FileWrite
     }
 
+    public String getFilePath() {
+        return filePath;
+    }
+
     @Override
     public void write(LogRecordInterface log) {
         try {
             writer.write(log.outputFormatted() + "\n");
             writer.flush();
         } catch (IOException e) {
-            System.err.println("Erro ao escrever em " + filePath + ": " + e.getMessage());
+            System.err.println("Erro ao escrever no ficheiro: " + e.getMessage());
         }
     }
 
-    public void close() throws IOException {
-        writer.close();
+    public void close() {
+        try {
+            writer.close();
+        } catch (IOException e) {
+            System.err.println("Erro ao fechar FileDestination: " + e.getMessage());
+        }
     }
 }

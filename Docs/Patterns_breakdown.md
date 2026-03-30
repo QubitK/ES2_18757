@@ -67,11 +67,39 @@ Logger.logAllDestinations(record)
 `PoolExhaustedException` — excepção lançada por `acquire()` quando `available` está vazia.
 
 `ObjectNotFoundException` — excepção lançada por `release()` quando a instância devolvida não pertence ao pool.
-
-`FileDestination` (alteração face a M3) — o `FileWriter` passa a ser aberto no construtor e mantido persistentemente, com `flush()` após cada `write()`. Expõe `close()` para libertação explícita do recurso.
+`FileDestination` — abre `FileWriter` em modo append a cada escrita (não persistente).
 
 ------------------------------------------------------------------------------
 
+
+### M6 — Memento
+**Objetivo:** permitir guardar e restaurar o estado completo do sistema de logging sem violar encapsulamento.
+
+`LogSystemMemento` — objeto imutável que representa um snapshot contendo:
+- `LogLevel minLevel`
+- `HashMap<String, String>` → mapping id → filePath dos destinos
+- `List<LogCategory>` → estrutura de categorias (sem `LogEntry`)
+
+`LogSystemOriginator` — entidade central que cria e restaura snapshots:
+- `backup()`:
+  - lê `LogConfig.INSTANCE`
+  - extrai destinos do `Logger`
+  - copia profundamente categorias (ignorando `LogEntry`)
+- `restore()`:
+  - repõe nível mínimo
+  - reconstrói destinos
+  - substitui categorias
+  - reinicializa `DestinationPool`
+
+`LogSystemCaretaker` — gere snapshots:
+- armazena lista de mementos
+- `takeSnapshot()` guarda estado
+- `restoreSnapshot(index)` restaura estado anterior
+
+**Nota importante:** apenas a estrutura (configuração + categorias + destinos) é preservada — os `LogEntry` são ignorados por não representarem estado estrutural.
+
+
+------------------------------------------------------------------------------
 ### Ligação entre os cinco padrões
 ```
 LogConfig.INSTANCE (M1)  →  consultado em LogRecord.format(), Logger.meetsMinLevel() e LogEntry.outputTo()
